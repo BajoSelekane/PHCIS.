@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="PHCIS/PHCIS.Client/PHCIS.Client.csproj" />
+  <Project Path="PHCIS/PHCIS/PHCIS.csproj" />
+</Solution>
