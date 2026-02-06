@@ -1,5 +1,9 @@
 <Solution>
+  <Project Path="Application/Application.csproj" />
   <Project Path="Domain/Domain.csproj" />
-  <Project Path="PHCIS/PHCIS.Client/PHCIS.Client.csproj" />
-  <Project Path="PHCIS/PHCIS/PHCIS.csproj" />
+  <Project Path="Infrastructure/Infrastructure.csproj" />
+  <Project Path="PHCIS-App/PHCIS-App.ApiService/PHCIS-App.ApiService.csproj" />
+  <Project Path="PHCIS-App/PHCIS-App.AppHost/PHCIS-App.AppHost.csproj" Id="1fcf6c32-230f-4cb0-89f1-65627902aefb" />
+  <Project Path="PHCIS-App/PHCIS-App.ServiceDefaults/PHCIS-App.ServiceDefaults.csproj" />
+  <Project Path="PHCIS-App/PHCIS-App.Web/PHCIS-App.Web.csproj" />
 </Solution>
