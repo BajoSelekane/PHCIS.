@@ -1,11 +1,10 @@
 ﻿using Domain.Entities;
-using Infrastructure.DB;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace WebApi.Data
+namespace Infrastructure.DB
 {
 
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -17,6 +16,7 @@ namespace WebApi.Data
         public DbSet<TimeSlot> Timeslots => Set<TimeSlot>();
         public DbSet<Login> Logins => Set<Login>();
         public DbSet<Register> Registers => Set<Register>();
+        public DbSet<ApplicationUser> Users => Set<ApplicationUser>();
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,6 +41,14 @@ namespace WebApi.Data
             modelBuilder.Entity<Patient>()
                 .HasQueryFilter(p => !p.IsDeleted)
                 .HasQueryFilter(Patients => Patients.Id == "");
+
+            modelBuilder.Entity<Appointment>()
+               .HasQueryFilter(c => !c.IsDeleted)
+               .HasQueryFilter(Appointments => Appointments.Id == "");
+
+            modelBuilder.Entity<TimeSlot>()
+               .HasQueryFilter(t => !t.IsDeleted)
+               .HasQueryFilter(Timeslots => Timeslots.Id == "");
 
             base.OnModelCreating(modelBuilder);
 

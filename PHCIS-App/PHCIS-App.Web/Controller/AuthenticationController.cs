@@ -2,9 +2,9 @@
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Win32;
 
-namespace PHCISApp.Web.Controller
+
+namespace Controller
 {
  [Route("api/[controller]")]
 [ApiController]
