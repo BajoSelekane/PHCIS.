@@ -6,4 +6,5 @@
   <Project Path="PHCIS-App/PHCIS-App.AppHost/PHCIS-App.AppHost.csproj" Id="1fcf6c32-230f-4cb0-89f1-65627902aefb" />
   <Project Path="PHCIS-App/PHCIS-App.ServiceDefaults/PHCIS-App.ServiceDefaults.csproj" />
   <Project Path="PHCIS-App/PHCIS-App.Web/PHCIS-App.Web.csproj" />
+  <Project Path="SharedLibrary/SharedLibrary.csproj" Id="09c9faed-73c3-4ef6-b67a-7789117f74e4" />
 </Solution>
