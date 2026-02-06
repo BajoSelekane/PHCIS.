@@ -1,0 +1,37 @@
+﻿using Infrastructure.DTOs;
+using Infrastructure.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Win32;
+
+namespace PHCISApp.Web.Controller
+{
+ [Route("api/[controller]")]
+[ApiController]
+    public class AuthenticationController(IUserAccount accountInterface) : ControllerBase
+    {
+        [HttpPost("register")]
+
+        public async Task<IActionResult> CreateAsync(Register user)
+        {
+            if (user == null) return BadRequest("Model is created");
+            var result = await accountInterface.CreateAsync(user);
+            return Ok(result);
+        }
+        [HttpPost("login")]
+        public async Task<IActionResult> SignInAsync(Login user)
+        {
+            if (user == null) return BadRequest("Model is Empty");
+            var result = await accountInterface.SignInAsync(user);
+            return Ok(result);
+        }
+        [HttpPost("refresh-token")]
+        public async Task<IActionResult> RefreshTokenAsync(RefreshToken token)
+        {
+            if (token == null) return BadRequest("Token is Empty");
+            var result = await accountInterface.RefreshTokenAsync(token);
+            return Ok(result);
+        }
+    }
+
+}

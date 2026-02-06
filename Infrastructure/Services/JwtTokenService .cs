@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Entities
+namespace Infrastructure.Services
 {
-    public class ApplicationUser
+    public class JwtTokenService
     {
     }
 }
