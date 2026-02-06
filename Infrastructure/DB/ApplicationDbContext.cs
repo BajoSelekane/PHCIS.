@@ -17,6 +17,7 @@ namespace Infrastructure.DB
         public DbSet<Login> Logins => Set<Login>();
         public DbSet<Register> Registers => Set<Register>();
         public DbSet<ApplicationUser> Users => Set<ApplicationUser>();
+        public DbSet<Clinics> Clinics => Set<Clinics>();
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

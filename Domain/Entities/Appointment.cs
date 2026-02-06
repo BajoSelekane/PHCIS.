@@ -5,6 +5,8 @@ namespace Domain.Entities
     public class Appointment :BaseEntity
     {
         public required string PatientId { get; set; }    
+        public Clinics Clinics { get; set; }
+        public string? ClinicsId { get; set; }
         public string? DoctorId { get; set; }
         public required string PhoneNumber { get; set; }
         public DateTime AppointmentDate { get; set; } 

@@ -12,7 +12,7 @@ namespace Infrastructure.DB
     }
     public sealed class Roles
     {
-
+        public int Id { get; set; }
         public const string Admin = "Admin";
         public const string Member = "Member";
         public const string Doc = "Doctor";
