@@ -1,0 +1,74 @@
+﻿@page "/login"
+
+@using Infrastructure.DB
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using PHCISApp.Web.Models
+@using Infrastructure
+@using System.Security.Claims
+@inject ApplicationDbContext dbContext
+@inject NavigationManager navigationManager
+
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 pd-4 border">
+        <EditForm Model="@Model" OnValidSubmit="Authenticate" FormName="LoginForm">
+            <DataAnnotationsValidator/>
+            <div class="mb-3 text-center flex-column">
+                <img src="/images/avator.png" style="max-height:5rem;"/>
+                <h3>Login</h3>
+            </div>
+
+            <div class="mb-3">
+                <label>User Name</label>
+                <InputText @bind-Value="Model.UserName" placeholder="UserName" class="form-control" />
+                <ValidationMessage For="() => Model.UserName" />
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <InputText @bind-Value="Model.Password" placeholder="Password" type="Password" class="form-control" />
+                <ValidationMessage For="() => Model.Password" />
+            </div>
+
+            <div class="mb-3 text-center">
+                <span class="text-danger">@errorMessage</span>
+
+            </div>
+            <div class="mb-3 d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Login</button>
+
+            </div>
+
+            
+        </EditForm>
+    </div>
+    </div>
+
+@code {
+
+    [CascadingParameter]
+    public HttpContext? GetHttpContext{ get; set; }
+    [SupplyParameterFromForm]
+    public LoginViewModel Model { get; set; } = new();
+    private string? errorMessage;
+    private async Task Authenticate()
+    {
+        var userAccount = dbContext.Users.Where(x => x.UserName == Model.UserName).FirstOrDefault();
+        if(userAccount is null || userAccount.Password != Model.Password)
+        {
+            errorMessage = "Invalid User Name or Password";
+        }
+
+        // var claims = new List<Claim>
+        // {
+        //     new Claim(ClaimTypes.Name,Model.UserName),
+        //     new Claim(ClaimTypes.Role, userAccount.roles)
+        // };
+
+       // var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        // var principal = new ClaimsPrincipal(identity);
+        // await HttpContext.SignInAsync(principal);
+        navigationManager.NavigateTo("/");
+    }
+}
